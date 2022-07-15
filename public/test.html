@@ -1,0 +1,40 @@
+<html>
+    <head>Image Resizer</head>
+
+    <body>
+        <img 
+            src="https://bafybeiecox4ps4tevdxcl2wus3lzbohbb7etus6s4df464hbjjl6hv34ne.ipfs.nftstorage.link/3450.png?ext=png"
+            id="my-image"
+            width="400"
+            height="400"
+            crossOrigin="anonymous"
+        />
+
+        <img 
+            src=""
+            id="resizedImage"
+        />
+
+        <script>
+            function getDataUrl(img) {
+                // Create canvas
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                // Set width and height
+                canvas.width = 300;
+                canvas.height = 300;
+                // Draw the image
+                ctx.drawImage(img, 0, 0, 300, 300);
+                return canvas.toDataURL('image/jpeg');
+            }
+            // Select the image
+            const img = document.querySelector('#my-image');
+            img.addEventListener('load', function (event) {
+                const dataUrl = getDataUrl(event.currentTarget);
+                
+                document.querySelector('#resizedImage').src = dataUrl
+            });
+
+        </script>
+    </body>
+</html>
