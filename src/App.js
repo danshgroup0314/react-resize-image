@@ -15,8 +15,6 @@ function App() {
     };
 
     const onUpdateFileURL = (event) => {
-        console.log(event.target.parentNode.querySelector('input').value)
-
         const imgSrc = event.target.parentNode.querySelector('input').value
 
         // Create Img Element with URL
@@ -25,20 +23,22 @@ function App() {
         imgElement.crossOrigin = 'anonymous'
         imgElement.style.display = 'none'
         document.body.appendChild(imgElement)
-        
-        // Create canvas
-        const canvas = document.createElement('canvas')
-        const ctx = canvas.getContext('2d')
-        // Set width and height
-        canvas.width = 300
-        canvas.height = 300
-        // Draw the image
-        ctx.drawImage(imgElement, 0, 0, 300, 300)
 
-        // Remove Img Element
-        imgElement.remove()
-
-        setResizedImageURL(canvas.toDataURL('image/jpeg'))
+        setTimeout(() => {
+            // Create canvas
+            const canvas = document.createElement('canvas')
+            const ctx = canvas.getContext('2d')
+            // Set width and height
+            canvas.width = 50
+            canvas.height = 50
+            // Draw the image
+            ctx.drawImage(imgElement, 0, 0, 50, 50)
+    
+            // Remove Img Element
+            imgElement.remove()
+    
+            setResizedImageURL(canvas.toDataURL('image/jpeg'))
+        }, 500)
     };
 
     return (
